@@ -8,6 +8,10 @@
 		<!-- Tailwind -->
 		<link rel="stylesheet" href="styles/output.css" />
 
+		<!-- Slick carousel -->
+		<link rel="stylesheet" type="text/css" href="slick/slick.css" />
+		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+
 		<!-- Fontawesome -->
 		<script
 			src="https://kit.fontawesome.com/d521bbec8a.js"
@@ -31,67 +35,30 @@
 		<!-- Main content -->
 		<main class="pt-16 pb-12">
 			<!-- Main heading -->
-			<h1 class="text-3xl font-bold text-center md:text-5xl">
+			<h1
+				class="w-11/12 mx-auto text-2xl font-bold text-center md:w-full md:text-5xl"
+			>
 				Apple iPhone 13 Pro Max
 			</h1>
 
 			<!-- Carousel -->
-			<div class="w-full my-4 carousel">
-				<!-- Slide 1 -->
-				<div id="slide1" class="relative w-full carousel-item">
-					<img
-						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-1-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894184583"
-						class="w-full"
-					/>
-					<div
-						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-					>
-						<a href="#slide4" class="btn btn-circle btn-sm md:btn-md">❮</a>
-						<a href="#slide2" class="btn btn-circle btn-sm md:btn-md">❯</a>
-					</div>
-				</div>
-
-				<!-- Slide 2 -->
-				<div id="slide2" class="relative w-full carousel-item">
-					<img
-						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-2-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894177855"
-						class="w-full"
-					/>
-					<div
-						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-					>
-						<a href="#slide1" class="btn btn-circle btn-sm md:btn-md">❮</a>
-						<a href="#slide3" class="btn btn-circle btn-sm md:btn-md">❯</a>
-					</div>
-				</div>
-
-				<!-- Slide 3 -->
-				<div id="slide3" class="relative w-full carousel-item">
-					<img
-						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-3-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894174822"
-						class="w-full"
-					/>
-					<div
-						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-					>
-						<a href="#slide2" class="btn btn-circle btn-sm md:btn-md">❮</a>
-						<a href="#slide4" class="btn btn-circle btn-sm md:btn-md">❯</a>
-					</div>
-				</div>
-
-				<!-- Slide 4 -->
-				<div id="slide4" class="relative w-full carousel-item">
-					<img
-						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-4-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894186187"
-						class="w-full"
-					/>
-					<div
-						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-					>
-						<a href="#slide3" class="btn btn-circle btn-sm md:btn-md">❮</a>
-						<a href="#slide1" class="btn btn-circle btn-sm md:btn-md">❯</a>
-					</div>
-				</div>
+			<div class="slick-carousel">
+				<img
+					src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-1-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894184583"
+					alt="All variants"
+				/>
+				<img
+					src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-2-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894177855"
+					alt="Green"
+				/>
+				<img
+					src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-3-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894174822"
+					alt="Pink"
+				/>
+				<img
+					src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-4-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894186187"
+					alt="Close up"
+				/>
 			</div>
 		</main>
 
@@ -222,5 +189,16 @@
 				<button>close</button>
 			</form>
 		</dialog>
+
+		<!-- Slick carousel stuff -->
+		<script
+			type="text/javascript"
+			src="//code.jquery.com/jquery-1.11.0.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+		></script>
+		<script type="text/javascript" src="slick/slick.min.js"></script>
 	</body>
 </html>

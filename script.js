@@ -1,3 +1,6 @@
+// Slick carousel
+$('.slick-carousel').slick()
+
 // DOM elements
 const cards = document.getElementById('cards')
 const buttons = document.getElementsByClassName('btn-accent')
@@ -40,7 +43,6 @@ const addBtnListeners = () => {
 }
 
 const renderData = async () => {
-	console.log(model)
 	const fragment = document.createDocumentFragment()
 	cards.innerHTML = ''
 

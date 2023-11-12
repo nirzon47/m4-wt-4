@@ -10,7 +10,9 @@ const processor = document.getElementById('processor')
 const ram = document.getElementById('ram')
 const sensors = document.getElementById('sensors')
 const released = document.getElementById('released')
-const modalBox = document.getElementById('modal-box')
+
+const search = document.getElementById('search')
+const loading = document.getElementById('loading')
 
 // Variables
 let model = []
@@ -20,9 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchData()
 })
 
-const addBtnListener = () => {
+search.addEventListener('input', (e) => {
+	if (e.target.value) {
+		fetchData(e.target.value)
+	} else {
+		fetchData()
+	}
+})
+
+const addBtnListeners = () => {
 	Array.from(buttons).forEach((btn) => {
-		const modal = document.getElementById('modal')
 		btn.addEventListener('click', (e) => {
 			const id = e.target.parentElement.parentElement.parentElement.id
 			fetchDetails(id)
@@ -64,15 +73,19 @@ const renderData = async () => {
 	})
 
 	cards.appendChild(fragment)
-	addBtnListener()
+	addBtnListeners()
 }
 
 const fetchData = async (search = 'iphone') => {
+	loading.style.opacity = 1
+	cards.style.opacity = 0
 	fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
 		.then((res) => res.json())
 		.then((data) => {
+			loading.style.opacity = 0
 			model = data.data
 			renderData()
+			cards.style.opacity = 1
 		})
 		.catch((err) => console.log(err))
 }

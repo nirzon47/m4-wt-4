@@ -108,13 +108,20 @@
 					type="text"
 					placeholder="Type here"
 					class="w-full max-w-xs input input-bordered"
+					id="search"
 				/>
 				<button type="submit" class="btn btn-primary">Search</button>
 			</form>
 
+			<!-- Loading -->
+			<span
+				class="block mx-auto duration-300 opacity-0 loading loading-dots loading-lg"
+				id="loading"
+			></span>
+
 			<!-- Search results -->
 			<section
-				class="flex flex-wrap items-center justify-center gap-4 pb-8"
+				class="flex flex-wrap items-center justify-center gap-4 pb-8 duration-300"
 				id="cards"
 			>
 				<!-- Mockup data -->

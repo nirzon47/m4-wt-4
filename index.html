@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Phone Shop</title>
+
+		<!-- Tailwind -->
+		<link rel="stylesheet" href="styles/output.css" />
+	</head>
+	<body class="w-screen min-h-screen px-4 py-8 md:py-12 md:px-16">
+		<!-- Header -->
+		<header
+			class="flex flex-col items-center justify-between gap-4 md:flex-row"
+		>
+			<!-- Page name -->
+			<h2 class="text-xl font-bold md:text-3xl">Phone Shop</h2>
+			<!-- Sign up button -->
+			<button class="btn btn-secondary btn-sm md:btn-md">Sign Up</button>
+		</header>
+
+		<!-- Main content -->
+		<main class="pt-16 pb-12">
+			<!-- Main heading -->
+			<h1 class="text-3xl font-bold text-center md:text-5xl">
+				Apple iPhone 13 Pro Max
+			</h1>
+
+			<!-- Carousel -->
+			<div class="w-full my-4 carousel">
+				<!-- Slide 1 -->
+				<div id="slide1" class="relative w-full carousel-item">
+					<img
+						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-1-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894184583"
+						class="w-full"
+					/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						<a href="#slide4" class="btn btn-circle btn-sm md:btn-md">❮</a>
+						<a href="#slide2" class="btn btn-circle btn-sm md:btn-md">❯</a>
+					</div>
+				</div>
+
+				<!-- Slide 2 -->
+				<div id="slide2" class="relative w-full carousel-item">
+					<img
+						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-2-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894177855"
+						class="w-full"
+					/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						<a href="#slide1" class="btn btn-circle btn-sm md:btn-md">❮</a>
+						<a href="#slide3" class="btn btn-circle btn-sm md:btn-md">❯</a>
+					</div>
+				</div>
+
+				<!-- Slide 3 -->
+				<div id="slide3" class="relative w-full carousel-item">
+					<img
+						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-3-202207_GEO_EMEA?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894174822"
+						class="w-full"
+					/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						<a href="#slide2" class="btn btn-circle btn-sm md:btn-md">❮</a>
+						<a href="#slide4" class="btn btn-circle btn-sm md:btn-md">❯</a>
+					</div>
+				</div>
+
+				<!-- Slide 4 -->
+				<div id="slide4" class="relative w-full carousel-item">
+					<img
+						src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-unselect-gallery-4-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1654894186187"
+						class="w-full"
+					/>
+					<div
+						class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+					>
+						<a href="#slide3" class="btn btn-circle btn-sm md:btn-md">❮</a>
+						<a href="#slide1" class="btn btn-circle btn-sm md:btn-md">❯</a>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Search content -->
+		<section class="pb-8">
+			<!-- Search heading -->
+			<h2 class="mb-4 text-2xl font-bold text-center md:text-3xl">
+				Search for your phone
+			</h2>
+
+			<!-- Search input -->
+			<form class="flex flex-col justify-center gap-2 md:flex-row">
+				<input
+					type="text"
+					placeholder="Type here"
+					class="w-full max-w-xs input input-bordered"
+				/>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+
+			<!-- Search results -->
+			<section class="pb-8"></section>
+		</section>
+	</body>
+</html>

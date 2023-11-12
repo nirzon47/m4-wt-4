@@ -16,6 +16,7 @@ const released = document.getElementById('released')
 
 const search = document.getElementById('search')
 const loading = document.getElementById('loading')
+const notFound = document.getElementById('not-found')
 
 // Variables
 let model = []
@@ -45,6 +46,12 @@ const addBtnListeners = () => {
 const renderData = async () => {
 	const fragment = document.createDocumentFragment()
 	cards.innerHTML = ''
+
+	if (model.length === 0) {
+		notFound.style.opacity = 1
+	} else {
+		notFound.style.opacity = 0
+	}
 
 	model.forEach((item) => {
 		const card = document.createElement('div')

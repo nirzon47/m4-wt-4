@@ -20,6 +20,7 @@ const notFound = document.getElementById('not-found')
 
 // Variables
 let model = []
+let len = 0
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,46 +44,33 @@ const addBtnListeners = () => {
 	})
 }
 
+// Functions
 const renderData = async () => {
-	const fragment = document.createDocumentFragment()
 	cards.innerHTML = ''
 
-	if (model.length === 0) {
+	if (len === 0) {
 		notFound.style.opacity = 1
 	} else {
 		notFound.style.opacity = 0
 	}
 
-	model.forEach((item) => {
-		const card = document.createElement('div')
-		card.classList.add('card-container')
+	let limit = len > 12 ? 12 : len
 
-		card.id = item.slug
+	renderWithinLimit(0, limit)
 
-		const elements = `
-                        <figure class="px-10 pt-10">
-                        <img
-                            src="${item.image}"
-                            alt="${item.phone_name}"
-                            class="rounded-xl"
-                        />
-                        </figure>
-                        <div class="items-center text-center card-body">
-                            <h2 class="mb-2 card-title">${item.phone_name}</h2>
-                            <div class="card-actions">
-                                <button class="btn btn-accent">
-                                    See details
-                                </button>
-                            </div>
-                        </div>
-                        `
+	if (len > 12) {
+		const showAllBtn = document.createElement('btn')
+		showAllBtn.classList.add('btn', 'btn-secondary')
+		showAllBtn.innerText = 'Show All'
 
-		card.innerHTML = elements
-		fragment.appendChild(card)
-	})
+		showAllBtn.addEventListener('click', () => {
+			renderAll()
 
-	cards.appendChild(fragment)
-	addBtnListeners()
+			showAllBtn.remove()
+		})
+
+		cards.appendChild(showAllBtn)
+	}
 }
 
 const fetchData = async (search = 'iphone') => {
@@ -93,6 +81,7 @@ const fetchData = async (search = 'iphone') => {
 		.then((data) => {
 			loading.style.opacity = 0
 			model = data.data
+			len = model.length
 			renderData()
 			cards.style.opacity = 1
 		})
@@ -119,4 +108,44 @@ const changeModalData = (data) => {
 	ram.innerText = data.mainFeatures.memory
 	sensors.innerText = data.mainFeatures.sensors
 	released.innerText = data.releaseDate
+}
+
+const renderAll = () => {
+	renderWithinLimit(12, len)
+}
+
+const renderWithinLimit = (start, end) => {
+	const fragment = document.createDocumentFragment()
+
+	for (let i = start; i < end; i++) {
+		const item = model[i]
+		const card = document.createElement('div')
+		card.classList.add('card-container')
+
+		card.id = item.slug
+
+		const elements = `
+            <figure class="px-10 pt-10">
+                <img
+                    src="${item.image}"
+                    alt="${item.phone_name}"
+                    class="rounded-xl"
+                />
+            </figure>
+            <div class="items-center text-center card-body">
+                <h2 class="mb-2 card-title">${item.phone_name}</h2>
+                <div class="card-actions">
+                    <button class="btn btn-accent">
+                        See details
+                    </button>
+                </div>
+            </div>
+        `
+
+		card.innerHTML = elements
+		fragment.appendChild(card)
+	}
+
+	cards.appendChild(fragment)
+	addBtnListeners()
 }

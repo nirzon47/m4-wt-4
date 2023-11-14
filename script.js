@@ -4,6 +4,7 @@ $('.slick-carousel').slick()
 // DOM elements
 const cards = document.getElementById('cards')
 const buttons = document.getElementsByClassName('btn-accent')
+
 const image = document.getElementById('image')
 const name = document.getElementById('name')
 const brand = document.getElementById('brand')
@@ -17,6 +18,7 @@ const released = document.getElementById('released')
 const search = document.getElementById('search')
 const loading = document.getElementById('loading')
 const notFound = document.getElementById('not-found')
+const form = document.getElementById('form')
 
 // Variables
 let model = []
@@ -33,6 +35,10 @@ search.addEventListener('input', (e) => {
 	} else {
 		fetchData()
 	}
+})
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault()
 })
 
 const addBtnListeners = () => {
@@ -64,7 +70,7 @@ const renderData = async () => {
 		showAllBtn.innerText = 'Show All'
 
 		showAllBtn.addEventListener('click', () => {
-			renderAll()
+			renderWithinLimit(12, len)
 
 			showAllBtn.remove()
 		})
@@ -108,10 +114,6 @@ const changeModalData = (data) => {
 	ram.innerText = data.mainFeatures.memory
 	sensors.innerText = data.mainFeatures.sensors
 	released.innerText = data.releaseDate
-}
-
-const renderAll = () => {
-	renderWithinLimit(12, len)
 }
 
 const renderWithinLimit = (start, end) => {

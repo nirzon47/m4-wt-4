@@ -41,6 +41,12 @@ form.addEventListener('submit', (e) => {
 	e.preventDefault()
 })
 
+/**
+ * Adds event listeners to all buttons.
+ *
+ * @param {array} buttons - The array of buttons to add listeners to.
+ * @return {undefined} This function does not return a value.
+ */
 const addBtnListeners = () => {
 	Array.from(buttons).forEach((btn) => {
 		btn.addEventListener('click', (e) => {
@@ -51,6 +57,33 @@ const addBtnListeners = () => {
 }
 
 // Functions
+
+/**
+ * Fetches data from the API based on the provided search term.
+ *
+ * @param {string} search - The search term to use when fetching data. Defaults to 'iphone'.
+ * @return {Promise<void>} - A promise that resolves when the data has been fetched and processed.
+ */
+const fetchData = async (search = 'iphone') => {
+	loading.style.opacity = 1
+	cards.style.opacity = 0
+	fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
+		.then((res) => res.json())
+		.then((data) => {
+			loading.style.opacity = 0
+			model = data.data
+			len = model.length
+			renderData()
+			cards.style.opacity = 1
+		})
+		.catch((err) => console.log(err))
+}
+
+/**
+ * Renders the data on the page.
+ *
+ * @return {Promise<void>} This function does not take any parameters and does not return anything.
+ */
 const renderData = async () => {
 	cards.innerHTML = ''
 
@@ -79,43 +112,12 @@ const renderData = async () => {
 	}
 }
 
-const fetchData = async (search = 'iphone') => {
-	loading.style.opacity = 1
-	cards.style.opacity = 0
-	fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
-		.then((res) => res.json())
-		.then((data) => {
-			loading.style.opacity = 0
-			model = data.data
-			len = model.length
-			renderData()
-			cards.style.opacity = 1
-		})
-		.catch((err) => console.log(err))
-}
-
-const fetchDetails = async (id) => {
-	fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
-		.then((res) => res.json())
-		.then((data) => {
-			changeModalData(data.data)
-			modal.showModal()
-		})
-		.catch((err) => console.log(err))
-}
-
-const changeModalData = (data) => {
-	image.src = data.image
-	name.innerText = data.name
-	brand.innerText = data.brand
-	storage.innerText = data.mainFeatures.storage
-	display.innerText = data.mainFeatures.displaySize
-	processor.innerText = data.mainFeatures.chipSet
-	ram.innerText = data.mainFeatures.memory
-	sensors.innerText = data.mainFeatures.sensors
-	released.innerText = data.releaseDate
-}
-
+/**
+ * Renders a range of items within a specified limit.
+ *
+ * @param {number} start - The starting index of the range.
+ * @param {number} end - The ending index of the range.
+ */
 const renderWithinLimit = (start, end) => {
 	const fragment = document.createDocumentFragment()
 
@@ -150,4 +152,47 @@ const renderWithinLimit = (start, end) => {
 
 	cards.appendChild(fragment)
 	addBtnListeners()
+}
+
+/**
+ * Fetches details for a given ID from the openapi.programming-hero.com API.
+ *
+ * @param {number} id - The ID of the phone to fetch details for.
+ * @return {Promise} A promise that resolves to the fetched details.
+ */
+const fetchDetails = async (id) => {
+	fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+		.then((res) => res.json())
+		.then((data) => {
+			changeModalData(data.data)
+			modal.showModal()
+		})
+		.catch((err) => console.log(err))
+}
+
+/**
+ * Updates the modal data with the given information.
+ *
+ * @param {Object} data - The data object containing the information to update the modal.
+ * @param {string} data.image - The image source to set for the modal.
+ * @param {string} data.name - The name to display in the modal.
+ * @param {string} data.brand - The brand to display in the modal.
+ * @param {string} data.mainFeatures.storage - The storage information to display in the modal.
+ * @param {string} data.mainFeatures.displaySize - The display size information to display in the modal.
+ * @param {string} data.mainFeatures.chipSet - The chip set information to display in the modal.
+ * @param {string} data.mainFeatures.memory - The memory information to display in the modal.
+ * @param {string} data.mainFeatures.sensors - The sensor information to display in the modal.
+ * @param {string} data.releaseDate - The release date to display in the modal.
+ * @return {undefined} This function does not return any value.
+ */
+const changeModalData = (data) => {
+	image.src = data.image
+	name.innerText = data.name
+	brand.innerText = data.brand
+	storage.innerText = data.mainFeatures.storage
+	display.innerText = data.mainFeatures.displaySize
+	processor.innerText = data.mainFeatures.chipSet
+	ram.innerText = data.mainFeatures.memory
+	sensors.innerText = data.mainFeatures.sensors
+	released.innerText = data.releaseDate
 }
